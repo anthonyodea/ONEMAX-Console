@@ -12,3 +12,10 @@ C:\Users\Client\Desktop\Programming\C#\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.c
 C:\Users\Client\Desktop\Programming\C#\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.csproj.CoreCompileInputs.cache
 C:\Users\Client\Desktop\Programming\C#\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.exe
 C:\Users\Client\Desktop\Programming\C#\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.pdb
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\bin\Debug\ONEMAX-GA.exe.config
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\bin\Debug\ONEMAX-GA.exe
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\bin\Debug\ONEMAX-GA.pdb
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.csprojAssemblyReference.cache
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.csproj.CoreCompileInputs.cache
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.exe
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.pdb

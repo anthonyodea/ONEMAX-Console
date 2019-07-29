@@ -11,13 +11,13 @@ namespace ONEMAX_GA.src
         public static void Main()
         {
             //Setting input parameters for population
-            int popSize = 40;
+            int popSize = 1000;
             int genomeLength = 10;
 
             //Population class constructor uses popsize and genomeLength
             Population pop = new Population(popSize, genomeLength);
-            pop.print(true);
-            Console.Write("Pres any key to exit...");
+            pop.print();
+            Console.Write("Press any key to exit...");
             Console.ReadKey();
         }
     }

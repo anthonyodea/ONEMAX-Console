@@ -126,7 +126,7 @@ namespace ONEMAX_GA.src
         //Prints the genes of every organism in the population
         public void print(bool checkForDuplicates = false)
         {
-            /*
+            
             Console.WriteLine("GENOME - FITNESS - SELECTION THRESHOLD - ID\n");
             for (int i = 0; i < 10; i++) //10 used to be this.popSize
             {
@@ -149,7 +149,7 @@ namespace ONEMAX_GA.src
                     }
                 }
             }
-            */
+            
 
             Console.WriteLine("Average Fitness: " + this.avgFitness);
             Console.WriteLine("Top Fitness: " + this.topFitness);

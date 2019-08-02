@@ -29,7 +29,7 @@ namespace ONEMAX_GA.src
 
     class Program
     {
-        public static void Main()
+        public static void Main(string[] args)
         {
             //Setting input parameters for population
             int popSize = 500;

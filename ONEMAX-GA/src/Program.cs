@@ -32,10 +32,22 @@ namespace ONEMAX_GA.src
         public static void Main(string[] args)
         {
             //Setting input parameters for population
-            int popSize = 500;
-            int genomeLength = 40;
-            float mutationRate = 0.01f;
-            int numOfParents = 2;
+            Console.Write("Please input the population size: ");
+            int popSize = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Please input the mutation rate: ");
+            float mutationRate = float.Parse(Console.ReadLine());
+
+            Console.Write("Please input the organism genome length: ");
+            int genomeLength = Int32.Parse(Console.ReadLine());
+
+            Console.Write("Please input the number of parents per organism: ");
+            int numOfParents = Int32.Parse(Console.ReadLine());
+
+            //int popSize = 500;
+            //int genomeLength = 40;
+            //float mutationRate = 0.01f;
+            //int numOfParents = 2;
 
             //Population class constructor uses popsize and genomeLength
             Population pop = new Population(popSize, genomeLength, mutationRate, numOfParents);

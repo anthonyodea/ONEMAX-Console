@@ -16,7 +16,7 @@ namespace ONEMAX_GA.src
         //Organism constructor - takes a random generator passed from population constructor, and uses it to generate
         //a random digit (0 or 1), then adds it to the 'genes' List. 
         //Method retrieved from https://stackoverflow.com/questions/31717160/set-default-value-for-parameter-of-liststring-type-in-function
-        public Organism(List<int> genome = null)
+        public Organism()
         {
 
         }

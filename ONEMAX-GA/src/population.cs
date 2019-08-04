@@ -127,28 +127,28 @@ namespace ONEMAX_GA.src
         public void print(bool checkForDuplicates = false)
         {
             
-            Console.WriteLine("GENOME - FITNESS - SELECTION THRESHOLD - ID\n");
-            for (int i = 0; i < 10; i++) //10 used to be this.popSize
-            {
-                for (int j = 0; j < this.orgs[i].genes.Count; j++)
-                {
-                    Console.Write(this.orgs[i].genes[j]);
-                }
-                Console.Write("     " + orgs[i].fitness + "     " + orgs[i].selectionThreshold + "     " + i + "\n");
+            //Console.WriteLine("GENOME - FITNESS - SELECTION THRESHOLD - ID\n");
+            //for (int i = 0; i < 10; i++) //10 used to be this.popSize
+            //{
+            //    for (int j = 0; j < this.orgs[i].genes.Count; j++)
+            //    {
+            //        Console.Write(this.orgs[i].genes[j]);
+            //    }
+            //    Console.Write("     " + orgs[i].fitness + "     " + orgs[i].selectionThreshold + "     " + i + "\n");
 
-                //Prints a statement if one organism has the exact same genome as another organism
-                if (checkForDuplicates)
-                {
-                    for (int k = 0; k < i; k++)
-                    {
-                        //Method retrieved from https://stackoverflow.com/questions/22173762/check-if-two-lists-are-equal
-                        if (this.orgs[i].genes.SequenceEqual(this.orgs[k].genes) && i != k)
-                        {
-                            Console.WriteLine("Organism " + i + " == Organism " + k);
-                        }
-                    }
-                }
-            }
+            //    //Prints a statement if one organism has the exact same genome as another organism
+            //    if (checkForDuplicates)
+            //    {
+            //        for (int k = 0; k < i; k++)
+            //        {
+            //            //Method retrieved from https://stackoverflow.com/questions/22173762/check-if-two-lists-are-equal
+            //            if (this.orgs[i].genes.SequenceEqual(this.orgs[k].genes) && i != k)
+            //            {
+            //                Console.WriteLine("Organism " + i + " == Organism " + k);
+            //            }
+            //        }
+            //    }
+            //}
             
 
             Console.WriteLine("Average Fitness: " + this.avgFitness);

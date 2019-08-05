@@ -1,0 +1,14 @@
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\bin\Debug\ONEMAX-GA.exe.config
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\bin\Debug\ONEMAX-GA.exe
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\bin\Debug\ONEMAX-GA.pdb
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-Console.csprojAssemblyReference.cache
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-Console.csproj.CoreCompileInputs.cache
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.exe
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-GA\ONEMAX-GA\obj\Debug\ONEMAX-GA.pdb
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\bin\Debug\ONEMAX-Console.exe.config
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\bin\Debug\ONEMAX-Console.exe
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\bin\Debug\ONEMAX-Console.pdb
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\obj\Debug\ONEMAX-Console.csprojAssemblyReference.cache
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\obj\Debug\ONEMAX-Console.csproj.CoreCompileInputs.cache
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\obj\Debug\ONEMAX-Console.exe
+C:\Users\Client\Desktop\Programming\Genetic Algorithms\ONEMAX\ONEMAX-Console\ONEMAX-GA\obj\Debug\ONEMAX-Console.pdb

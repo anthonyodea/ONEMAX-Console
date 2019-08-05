@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29025.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ONEMAX-Console", "ONEMAX-GA\ONEMAX-Console.csproj", "{C8A1F23D-67D9-4D8D-94B0-97294EDA109F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C8A1F23D-67D9-4D8D-94B0-97294EDA109F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8A1F23D-67D9-4D8D-94B0-97294EDA109F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8A1F23D-67D9-4D8D-94B0-97294EDA109F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8A1F23D-67D9-4D8D-94B0-97294EDA109F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ABAE3EB1-2FF9-481D-B18A-1002A220377C}
+	EndGlobalSection
+EndGlobal

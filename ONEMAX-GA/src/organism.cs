@@ -13,9 +13,6 @@ namespace ONEMAX_GA.src
         public float fitness { get; set; }
         public float selectionThreshold { get; set; }
 
-        //Organism constructor - takes a random generator passed from population constructor, and uses it to generate
-        //a random digit (0 or 1), then adds it to the 'genes' List. 
-        //Method retrieved from https://stackoverflow.com/questions/31717160/set-default-value-for-parameter-of-liststring-type-in-function
         public Organism()
         {
 
@@ -31,8 +28,10 @@ namespace ONEMAX_GA.src
             }
         }
 
-        //Calculate fitness of this specific organism
-        //Only to be used by Population.calcFitness(), when getting fitness of algorithm, use float fitness { get; set; }
+        //Calculate fitness of this specific organism (basically counts how many 1's appear, then divides to get
+        //a float between 0 and 1
+
+        //Only to be used by Population.calcFitness(), when getting fitness of organism, use float fitness { get; set; }
         public void calcFitness()
         {
             float fitness = 0;
@@ -44,12 +43,17 @@ namespace ONEMAX_GA.src
             this.fitness = fitness;
         } 
 
+        //Takes two parent organisms and creates a child with genes from both, analogous to 'crossover stage'
+        //of meiosis
         //Currently only supports two parents
+        //Uses uniform crossover, may experiment with single-point crossover and k-point crossover later
         public Organism crossover(Organism B)
         {
             Organism child = new Organism();
+
             for (int i = 0; i < genes.Count; i++)
             {
+                //50:50 odds of getting a gene from either parent
                 if (Global.rndGen.Next(2) == 1)
                     child.genes.Add(B.genes[i]);
                 else
@@ -62,16 +66,19 @@ namespace ONEMAX_GA.src
         //Mutate this specific organism
         public void mutate(float mutationRate)
         {
-            if (mutationRate == 0) return;
+            if (mutationRate == 0) return; //Ensures no division by 0 errors
+            
+            //Does this process PER GENE, not per organism
             for (int i = 0; i < genes.Count; i++)
             {
-                if (Global.rndGen.Next((int)(1/mutationRate)) == 0)
+                if (Global.rndGen.Next((int)(1/mutationRate)) == 0) //e.g. let mutRate be 0.01, then we get rndGen.Next(100), and there is a 1% of getting a 0.
                 {
-                    genes[i] = Global.rndGen.Next(2);
+                    genes[i] = Global.rndGen.Next(2); //Gets a random int, either 0 or 1, and assigns it to that specific gene
                 }
             }
         }
 
+        //Returns this.genes as a string
         public string returnGenome()
         {
             string output = "";

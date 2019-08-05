@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-//Documentation on implementation of Random object
+//Documentation on implementation of Random object                  !!!
 /*
     The same Random object should be used for every random operation in a given context. The Random() constructor
     takes the time (Environment.TickCount) as a seed. Therefore, if two Random objects are created at times very close
@@ -21,9 +21,12 @@ using System.Threading.Tasks;
 
 namespace ONEMAX_GA.src
 {
+    //Sole purpose is to provide global fields
     static class Global
     {
+        //Global Random so every class may use the same Random object
         public static Random rndGen { get; set; } = new Random();
+        //Global isFinished so Population.cs may access it
         public static bool isFinished = false;
     }
 
@@ -32,16 +35,16 @@ namespace ONEMAX_GA.src
         public static void Main(string[] args)
         {
             //Setting input parameters for population
-            Console.Write("Please input the population size: ");
+            Console.Write("Please input the population size (between 100 and 5000): ");
             int popSize = Int32.Parse(Console.ReadLine());
 
-            Console.Write("Please input the mutation rate: ");
+            Console.Write("Please input the mutation rate (between 0 and 1): ");
             float mutationRate = float.Parse(Console.ReadLine());
 
-            Console.Write("Please input the organism genome length: ");
+            Console.Write("Please input the organism genome length (between 10 and 50): ");
             int genomeLength = Int32.Parse(Console.ReadLine());
 
-            Console.Write("Please input the number of parents per organism: ");
+            Console.Write("Please input the number of parents per organism (must be 2): ");
             int numOfParents = Int32.Parse(Console.ReadLine());
 
             //int popSize = 500;
@@ -55,13 +58,13 @@ namespace ONEMAX_GA.src
             //Evolutionary loop            
             while (!Global.isFinished)
             {
-                System.Threading.Thread.Sleep(100);
+                System.Threading.Thread.Sleep(50);
                 Console.Clear();
                 //Calculates the fitness of every organism in the population
                 pop.calcFitness();
                 //Calculates the selection thresholds of every organism in the population
                 pop.calcSelectionThresholds();
-                //Prints Poplulation data and selection of organisms
+                //Prints Poplulation data and if parameter 1 is true, then a sample of the population (i.e. pop.print(true))
                 pop.print();
                 //Creates a new generation, and updates pop.orgs to hold the new organisms
                 pop.newGen();

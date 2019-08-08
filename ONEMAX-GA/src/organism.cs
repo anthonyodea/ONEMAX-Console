@@ -15,7 +15,7 @@ namespace ONEMAX_GA.src
 
         public Organism()
         {
-
+            
         }
 
         //Initialises an organism with a random genome -- Should only be used when creating a new population
@@ -23,7 +23,7 @@ namespace ONEMAX_GA.src
         {
             for (int i = 0; i < genomeLength; i++)
             {
-                int randnum = Global.rndGen.Next(2);
+                int randnum = RandomUtils.rndGen.Next(2);
                 genes.Add(randnum);
             }
         }
@@ -31,8 +31,8 @@ namespace ONEMAX_GA.src
         //Calculate fitness of this specific organism (basically counts how many 1's appear, then divides to get
         //a float between 0 and 1
 
-        //Only to be used by Population.calcFitness(), when getting fitness of organism, use float fitness { get; set; }
-        public void calcFitness()
+        //Only to be used by Population.UpdateFitness(), when getting fitness of organism, use float fitness { get; set; }
+        public void UpdateFitness()
         {
             float fitness = 0;
             for (int i = 0; i < this.genes.Count; i++)
@@ -54,7 +54,7 @@ namespace ONEMAX_GA.src
             for (int i = 0; i < genes.Count; i++)
             {
                 //50:50 odds of getting a gene from either parent
-                if (Global.rndGen.Next(2) == 1)
+                if (RandomUtils.rndGen.Next(2) == 1)
                     child.genes.Add(B.genes[i]);
                 else
                     child.genes.Add(this.genes[i]); //this = parentA
@@ -71,15 +71,24 @@ namespace ONEMAX_GA.src
             //Does this process PER GENE, not per organism
             for (int i = 0; i < genes.Count; i++)
             {
-                if (Global.rndGen.Next((int)(1/mutationRate)) == 0) //e.g. let mutRate be 0.01, then we get rndGen.Next(100), and there is a 1% of getting a 0.
+                if (RandomUtils.rndGen.Next((int)(1/mutationRate)) == 0) //e.g. let mutRate be 0.01, then we get rndGen.Next(100), and there is a 1% of getting a 0.
                 {
-                    genes[i] = Global.rndGen.Next(2); //Gets a random int, either 0 or 1, and assigns it to that specific gene
+                    switch (genes[i])
+                    {
+                    case 0:
+                        genes[i] = 1;
+                        break;
+                    case 1:
+                        genes[i] = 0;
+                        break;
+                    }
+                    //genes[i] = RandomUtils.rndGen.Next(2); //Gets a random int, either 0 or 1, and assigns it to that specific gene
                 }
             }
         }
 
         //Returns this.genes as a string
-        public string returnGenome()
+        override public string ToString()
         {
             string output = "";
             for (int i = 0; i < genes.Count; i++) output += genes[i].ToString();

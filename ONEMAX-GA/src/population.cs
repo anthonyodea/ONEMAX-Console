@@ -9,9 +9,9 @@ namespace ONEMAX_GA.src
     class Population
     {
         //Population Characteristics
-        int popSize;
-        float mutationRate;
-        int numOfParents;
+        readonly int popSize;
+        readonly float mutationRate;
+        readonly int numOfParents;
 
         //Population Statistics
         float avgFitness = 0;
@@ -19,6 +19,7 @@ namespace ONEMAX_GA.src
         float fitsum = 0;
         int topOrgID;
         int generationsPassed = 1;
+        public bool isFinished = false;
 
         //A list of organisms, which will serve as the population
         List<Organism> orgs = new List<Organism>();
@@ -46,7 +47,7 @@ namespace ONEMAX_GA.src
             for (int i = 0; i < this.orgs.Count; i++)
             {
                 //Makes the organism calculate their fitness, and update its fitness field
-                this.orgs[i].calcFitness();
+                this.orgs[i].UpdateFitness();
                 
                 fitsum += orgs[i].fitness;
                 if (topFitness < orgs[i].fitness)
@@ -58,7 +59,7 @@ namespace ONEMAX_GA.src
             this.avgFitness = fitsum / this.orgs.Count;
 
             //Ending program if an organism with fitness 1 occurs
-            if (topFitness == 1) Global.isFinished = true;
+            if (topFitness == 1) isFinished = true;
         }
 
         //Documentation on implementation of roulette selection                 !!!
@@ -89,8 +90,8 @@ namespace ONEMAX_GA.src
             //Setup for roulette selection
 
             //Setting each organism's selection threshold
-            //Processes orgs[0] seperately to the rest of the population as orgs[0 - 1] causes an indexing error
-            this.orgs[0].selectionThreshold = 0 + this.orgs[0].fitness / fitsum;
+            //Processes orgs[0] separately to the rest of the population as orgs[0 - 1] causes an indexing error
+            this.orgs[0].selectionThreshold = 0 + this.orgs[0].fitness / fitsum; //In this case '0' acts as the previous organism's selection threshold
             for (int i = 1; i < popSize; i++)
             {
                 //Takes the previous organism's selection threshold and adds a given number dependent on its fitness
@@ -103,7 +104,7 @@ namespace ONEMAX_GA.src
             while (true) //To make sure if it screws up this time because of RNG, it has another go
             {
                 //Makes rndNum a random number between 0 and 1 with 3 decimal places
-                float rndNum = Global.rndGen.Next(1000) / 1000f;
+                float rndNum = RandomUtils.rndGen.Next(1000) / 1000f;
 
                 //Processes orgs[0] seperately to the rest of the population as orgs[0 - 1] causes an indexing error
                 if (rndNum >= 0 && rndNum < orgs[0].selectionThreshold)
@@ -175,7 +176,7 @@ namespace ONEMAX_GA.src
             Console.WriteLine("Average Fitness: " + this.avgFitness);
             Console.WriteLine("Top Fitness: " + this.topFitness);
             Console.WriteLine("Best Organism ID: " + this.topOrgID);
-            Console.WriteLine("Best Organism Genome: " + this.orgs[topOrgID].returnGenome());
+            Console.WriteLine("Best Organism Genome: " + this.orgs[topOrgID]);
             Console.WriteLine("Generations Passed: " + this.generationsPassed);
         }
     }

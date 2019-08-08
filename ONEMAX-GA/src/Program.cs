@@ -22,43 +22,53 @@ using System.Threading.Tasks;
 namespace ONEMAX_GA.src
 {
     //Sole purpose is to provide global fields
-    static class Global
+    static class RandomUtils
     {
         //Global Random so every class may use the same Random object
         public static Random rndGen { get; set; } = new Random();
-        //Global isFinished so Population.cs may access it
-        public static bool isFinished = false;
     }
 
     class Program
     {
         public static void Main(string[] args)
         {
-            //Setting input parameters for population
-            Console.Write("Please input the population size (between 100 and 5000): ");
-            int popSize = Int32.Parse(Console.ReadLine());
+            bool autoset = true; //For debugging purposes
 
-            Console.Write("Please input the mutation rate (between 0 and 1): ");
-            float mutationRate = float.Parse(Console.ReadLine());
+            int popSize;
+            int genomeLength;
+            float mutationRate;
+            int numOfParents;
 
-            Console.Write("Please input the organism genome length (between 10 and 50): ");
-            int genomeLength = Int32.Parse(Console.ReadLine());
+            if (autoset)
+            {
+                popSize = 500;
+                genomeLength = 40;
+                mutationRate = 0.01f;
+                numOfParents = 2;
+            }
+            else
+            {
+                //Setting input parameters for population
+                Console.Write("Please input the population size (between 100 and 5000): ");
+                popSize = Int32.Parse(Console.ReadLine());
 
-            Console.Write("Please input the number of parents per organism (must be 2): ");
-            int numOfParents = Int32.Parse(Console.ReadLine());
+                Console.Write("Please input the mutation rate (between 0 and 1): ");
+                mutationRate = float.Parse(Console.ReadLine());
 
-            //int popSize = 500;
-            //int genomeLength = 40;
-            //float mutationRate = 0.01f;
-            //int numOfParents = 2;
+                Console.Write("Please input the organism genome length (between 10 and 50): ");
+                genomeLength = Int32.Parse(Console.ReadLine());
+
+                Console.Write("Please input the number of parents per organism (must be 2): ");
+                numOfParents = Int32.Parse(Console.ReadLine());
+            }
 
             //Population class constructor uses popsize and genomeLength
             Population pop = new Population(popSize, genomeLength, mutationRate, numOfParents);
             
             //Evolutionary loop            
-            while (!Global.isFinished)
+            while (!pop.isFinished)
             {
-                System.Threading.Thread.Sleep(50);
+                System.Threading.Thread.Sleep(100);
                 Console.Clear();
                 //Calculates the fitness of every organism in the population
                 pop.calcFitness();

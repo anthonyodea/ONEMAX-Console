@@ -101,25 +101,26 @@ namespace ONEMAX_GA.src
 
         public Organism selectOrg()
         {
-            while (true) //To make sure if it screws up this time because of RNG, it has another go
+            //Makes rndNum a random number between 0 and 1 with 3 decimal places
+            float rndNum = RandomUtils.rndGen.Next(1000) / 1000f;
+
+            //Processes orgs[0] seperately to the rest of the population as orgs[0 - 1] causes an indexing error
+            if (rndNum >= 0 && rndNum < orgs[0].selectionThreshold)
             {
-                //Makes rndNum a random number between 0 and 1 with 3 decimal places
-                float rndNum = RandomUtils.rndGen.Next(1000) / 1000f;
-
-                //Processes orgs[0] seperately to the rest of the population as orgs[0 - 1] causes an indexing error
-                if (rndNum >= 0 && rndNum < orgs[0].selectionThreshold)
-                {
-                    return orgs[0];
-                }
-
-                for (int i = 1; i < popSize; i++)
-                {
-                    if (rndNum >= orgs[i - 1].selectionThreshold && rndNum < orgs[i].selectionThreshold)
-                    {
-                        return orgs[i];
-                    }
-                }     
+                return orgs[0];
             }
+
+            for (int i = 1; i < popSize; i++)
+            {
+                if (rndNum >= orgs[i - 1].selectionThreshold && rndNum < orgs[i].selectionThreshold)
+                {
+                    return orgs[i];
+                }
+            }
+
+            return orgs[popSize - 1]; //If for some reason an organism is not selected above, will return the last organism in the list
+                                      //Usually occurs where last organism's selection threshold is ~0.99998, not 1, and the rndGen outputs above this threshold
+                                      //Occurs extremely rarely
         }
 
         //Makes a child between two organisms (includes organism functions crossover() and mutate()

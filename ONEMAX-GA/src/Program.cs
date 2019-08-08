@@ -32,7 +32,7 @@ namespace ONEMAX_GA.src
     {
         public static void Main(string[] args)
         {
-            bool autoset = true; //For debugging purposes
+            bool autoset = false; //For debugging purposes
 
             int popSize;
             int genomeLength;

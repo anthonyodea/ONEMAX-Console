@@ -4,11 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ONEMAX_GA.src
+namespace AntCode64.ONEMAX_Console
 {
     class Organism
     {
-        //Creates a list of genes with getter and setter functions
+        /// <summary>
+        /// Creates a list of genes with getter and setter functions
+        /// </summary>
         public List<int> genes { get; set; } = new List<int>();
         public float fitness { get; set; }
         public float selectionThreshold { get; set; }
@@ -18,20 +20,23 @@ namespace ONEMAX_GA.src
             
         }
 
-        //Initialises an organism with a random genome -- Should only be used when creating a new population
-        public void initRandom(int genomeLength)
+        /// <summary>
+        /// Initialises an organism with a random genome -- Should only be used when creating a new population
+        /// </summary>
+        public void InitRandom(int genomeLength)
         {
             for (int i = 0; i < genomeLength; i++)
             {
-                int randnum = RandomUtils.rndGen.Next(2);
+                int randnum = RandomUtils.RndGen.Next(2);
                 genes.Add(randnum);
             }
         }
 
-        //Calculate fitness of this specific organism (basically counts how many 1's appear, then divides to get
-        //a float between 0 and 1
-
-        //Only to be used by Population.UpdateFitness(), when getting fitness of organism, use float fitness { get; set; }
+        /// <summary>
+        /// Calculate fitness of this specific organism (basically counts how many 1's appear, then divides to get
+        /// a float between 0 and 1
+        /// Only to be used by Population.UpdateFitness(), when getting fitness of organism, use float fitness { get; set; }
+        /// </summary>
         public void UpdateFitness()
         {
             float fitness = 0;
@@ -39,39 +44,47 @@ namespace ONEMAX_GA.src
             {
                 if (genes[i] == 1) fitness++;
             }
-            fitness /= this.genes.Count; //Changes fitness to a float from 0 to 1
+            fitness /= this.genes.Count; // Changes fitness to a float from 0 to 1
             this.fitness = fitness;
-        } 
+        }
 
-        //Takes two parent organisms and creates a child with genes from both, analogous to 'crossover stage'
-        //of meiosis
-        //Currently only supports two parents
-        //Uses uniform crossover, may experiment with single-point crossover and k-point crossover later
-        public Organism crossover(Organism B)
+        /// <summary>
+        /// Takes two parent organisms and creates a child with genes from both, analogous to 'crossover stage'
+        /// of meiosis
+        /// Currently only supports two parents
+        /// Uses uniform crossover, may experiment with single-point crossover and k-point crossover later
+        /// </summary>
+        public Organism Crossover(Organism B)
         {
             Organism child = new Organism();
 
             for (int i = 0; i < genes.Count; i++)
             {
-                //50:50 odds of getting a gene from either parent
-                if (RandomUtils.rndGen.Next(2) == 1)
+                // 50:50 odds of getting a gene from either parent
+                if (RandomUtils.RndGen.Next(2) == 1)
+                {
                     child.genes.Add(B.genes[i]);
+                }
                 else
-                    child.genes.Add(this.genes[i]); //this = parentA
+                {
+                    child.genes.Add(this.genes[i]); // this = parentA
+                }
             }
 
             return child;
         }
 
-        //Mutate this specific organism
-        public void mutate(float mutationRate)
+        /// <summary>
+        /// Mutate this specific organism
+        /// </summary>
+        public void Mutate(float mutationRate)
         {
-            if (mutationRate == 0) return; //Ensures no division by 0 errors
+            if (mutationRate == 0) return; // Ensures no division by 0 errors
             
-            //Does this process PER GENE, not per organism
+            // Does this process PER GENE, not per organism
             for (int i = 0; i < genes.Count; i++)
             {
-                if (RandomUtils.rndGen.Next((int)(1/mutationRate)) == 0) //e.g. let mutRate be 0.01, then we get rndGen.Next(100), and there is a 1% of getting a 0.
+                if (RandomUtils.RndGen.Next((int)(1/mutationRate)) == 0) // e.g. let mutRate be 0.01, then we get rndGen.Next(100), and there is a 1% of getting a 0.
                 {
                     switch (genes[i])
                     {
@@ -82,17 +95,21 @@ namespace ONEMAX_GA.src
                         genes[i] = 0;
                         break;
                     }
-                    //genes[i] = RandomUtils.rndGen.Next(2); //Gets a random int, either 0 or 1, and assigns it to that specific gene
                 }
             }
         }
 
-        //Returns this.genes as a string
+        /// <summary>
+        /// Returns this.genes as a string
+        /// </summary>
         override public string ToString()
         {
             string output = "";
-            for (int i = 0; i < genes.Count; i++) output += genes[i].ToString();
-
+            for (int i = 0; i < genes.Count; i++)
+            {
+                output += genes[i].ToString();
+            }
+                
             return output;
         }
     }

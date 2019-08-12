@@ -42,6 +42,7 @@
     <Compile Include="src\Organism.cs" />
     <Compile Include="src\Population.cs" />
     <Compile Include="src\Program.cs" />
+    <Compile Include="src\RandomUtils.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon1.ico" />

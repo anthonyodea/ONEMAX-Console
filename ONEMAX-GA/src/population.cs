@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace AntCode64.ONEMAX_Console
 {
@@ -24,6 +25,15 @@ namespace AntCode64.ONEMAX_Console
         // A list of organisms, which will serve as the population
         List<Organism> orgs = new List<Organism>();
 
+        // Name of the population, for the purpose of data storage in files (see PrintToFile())
+        string popName;
+
+        //Output file for this population
+        string outFilePath;
+
+        // For TimerData.csv, which records the end statistics of each population
+        public string termReason = "Time Limit Reached"; //Set this to default, changed in UpdateFitness() if other cutoff conditions are met
+
         /// <summary>
         /// Creates a new population with population characteristics popSize, genomeLength, mutationRate, and numOfParents
         /// Initialises local fields with corresponding parameters
@@ -31,12 +41,27 @@ namespace AntCode64.ONEMAX_Console
         /// Creates a new organism and initialises it with a random genome, then adds it to the 'orgs' List. This is repeated
         /// until orgs reaches the same length as popSize
         /// </summary>
-        public Population(int popSize, int genomeLength, float mutationRate, int numOfParents)
+        public Population(int popSize, int genomeLength, float mutationRate, int numOfParents, string popName)
         {
             // Sets local variables to the values of the parameters
             this.popSize = popSize;
             this.mutationRate = mutationRate;
             this.numOfParents = numOfParents;
+            this.popName = popName;
+            this.outFilePath = @"Data/" + popName + "/" + popName + " (1).csv";
+            // If a new file for this new population is not created, it will be appended to the previous population with the same name
+            // Therefore a new file must be created
+            for (int i = 1; File.Exists(outFilePath); i++)
+            {
+                outFilePath = @"Data/" + popName + "/" + popName + " (" + i.ToString() + ")" + ".csv";
+            }
+            
+
+            // Creates the Data directory if it does not already exist
+            Directory.CreateDirectory("Data");
+
+            //Creates the popName directory if it does not already exist (grouping populations with the same name together)
+            Directory.CreateDirectory("Data/" + popName);
 
             for (int i = 0; i < popSize; i++)
             {
@@ -45,6 +70,12 @@ namespace AntCode64.ONEMAX_Console
                 newOrg.InitRandom(genomeLength);
                 orgs.Add(newOrg);
             }
+
+            File.AppendAllText(outFilePath, "Population Size: " + popSize + ", Mutation Rate: " + mutationRate + "\n\n");
+
+            File.AppendAllText(outFilePath, "Generation, ");
+            File.AppendAllText(outFilePath, "Average Fitness, ");
+            File.AppendAllText(outFilePath, "Top Fitness\n");
         }
 
         /// <summary>
@@ -72,7 +103,26 @@ namespace AntCode64.ONEMAX_Console
             if (topFitness == 1)
             {
                 isFinished = true;
+                termReason = "Maximum Fitness";
             }   
+            else if (checkForAsymptote())
+            {
+                isFinished = true;
+                termReason = "Asymptotic Fitness";
+            }
+        }
+        public string getFinalResult()
+        {
+            return popName + ", " + popSize.ToString() + ", " + mutationRate.ToString() + ", " + topFitness.ToString() + ", " + avgFitness.ToString();
+        }
+
+        // CONCERN WITH DATA COLLECTION ****************************
+        // The cutoff method assumes all populations with the same parameters have the same termination reason
+        // What if two runs of the same population end for different reasons? How do you compare them? Or average them?
+
+        private bool checkForAsymptote()
+        {
+            return false;
         }
 
         /// <remarks> Documentation on implementation of roulette selection
@@ -191,6 +241,13 @@ namespace AntCode64.ONEMAX_Console
         /// </summary>
         public void Print(bool printPopSample = false)
         {
+            // Slows the program down so the data may be readable on screen. This is unnecessary if the 
+            // Print() method is not called, therefore the sleep command is given here
+            System.Threading.Thread.Sleep(100);
+
+            // Clears previous data shown on screen
+            Console.Clear();
+
             // Prints the first 10 organisms of population if requested
             if (printPopSample)
             {
@@ -211,6 +268,16 @@ namespace AntCode64.ONEMAX_Console
             Console.WriteLine("Best Organism ID: " + this.topOrgID);
             Console.WriteLine("Best Organism Genome: " + this.orgs[topOrgID]);
             Console.WriteLine("Generations Passed: " + this.generationsPassed);
+        }
+
+        /// <summary>
+        /// Prints population characteristics to a separate file given by string outFilePath
+        /// </summary>
+        public void PrintToFile()
+        {
+            File.AppendAllText(outFilePath, this.generationsPassed.ToString() + ", ");
+            File.AppendAllText(outFilePath, this.avgFitness.ToString() + ", ");
+            File.AppendAllText(outFilePath, this.topFitness.ToString() + "\n");
         }
     }
 }

@@ -113,7 +113,7 @@ namespace AntCode64.ONEMAX_Console
             // Creating TimerData.csv if it does not already exist
             if (!File.Exists("TimerData.csv"))
             {
-                File.AppendAllText("TimerData.csv", "Population Name, Population Size, Mutation Rate, Top Fitness, Average Fitness, Time to Completion, Reason for Termination\n");
+                File.AppendAllText("TimerData.csv", "Population Name, Population Size, Mutation Rate, Top Fitness, Average Fitness, Time to Completion, CPU Time, Reason for Termination\n");
             }
 
             // Starting stopwatch for 1 min cutoff
@@ -150,14 +150,16 @@ namespace AntCode64.ONEMAX_Console
 
             sw.Stop();
             PrintTimerData(pop.getFinalResult(), sw.ElapsedMilliseconds, pop.termReason);
-
             return;
         }
 
         public static void PrintTimerData(string finalResult, long millelapsed, string termReason)
         {
+            double cpuTime = Process.GetCurrentProcess().TotalProcessorTime.TotalMilliseconds;
+
             File.AppendAllText("TimerData.csv", finalResult + ", ");
             File.AppendAllText("TimerData.csv", millelapsed.ToString() + ", ");
+            File.AppendAllText("TimerData.csv", cpuTime.ToString() + ", ");
             File.AppendAllText("TimerData.csv", termReason + "\n");
         }
     }

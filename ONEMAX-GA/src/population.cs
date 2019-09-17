@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -74,6 +75,7 @@ namespace AntCode64.ONEMAX_Console
             File.AppendAllText(outFilePath, "Population Size: " + popSize + ", Mutation Rate: " + mutationRate + "\n\n");
 
             File.AppendAllText(outFilePath, "Generation, ");
+            File.AppendAllText(outFilePath, "CPU Time Elapsed, ");
             File.AppendAllText(outFilePath, "Average Fitness, ");
             File.AppendAllText(outFilePath, "Top Fitness\n");
         }
@@ -275,7 +277,10 @@ namespace AntCode64.ONEMAX_Console
         /// </summary>
         public void PrintToFile()
         {
+            double cpuTime = Process.GetCurrentProcess().TotalProcessorTime.TotalMilliseconds;
+
             File.AppendAllText(outFilePath, this.generationsPassed.ToString() + ", ");
+            File.AppendAllText(outFilePath, cpuTime.ToString() + ", ");
             File.AppendAllText(outFilePath, this.avgFitness.ToString() + ", ");
             File.AppendAllText(outFilePath, this.topFitness.ToString() + "\n");
         }

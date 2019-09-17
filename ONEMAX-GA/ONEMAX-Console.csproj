@@ -37,6 +37,11 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="bin\Debug\ONEMAX-Console.exe.config" />
+    <None Include="bin\Debug\script.bat" />
+    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <None Include="obj\Debug\ONEMAX-Console.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\ONEMAX-Console.csprojAssemblyReference.cache" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="src\Organism.cs" />
@@ -45,10 +50,21 @@
     <Compile Include="src\RandomUtils.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Debug\ONEMAX-Console.exe" />
+    <Content Include="bin\Debug\ONEMAX-Console.pdb" />
     <Content Include="icon1.ico" />
+    <Content Include="img\icon1.ico" />
+    <Content Include="img\icon1.png" />
+    <Content Include="obj\Debug\ONEMAX-Console.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Debug\ONEMAX-Console.exe" />
+    <Content Include="obj\Debug\ONEMAX-Console.pdb" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="bin\Release\" />
+    <Folder Include="obj\Debug\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,11 +1,13 @@
 @echo off
 
-SET /a popsize=400
+TITLE script.bat
+
+SET /a popsize=100
 SET /a mutrateUnits=0
 SET /a mutrateTenths=0
-SET /a mutrateHundredths=1
+SET /a mutrateHundredths=0
 
-SET /a repetitions=500
+SET /a repetitions=10
 
 SET popname=Popsize_%popsize%_Mutrate_%mutrateUnits%.%mutrateTenths%%mutrateHundredths%
 

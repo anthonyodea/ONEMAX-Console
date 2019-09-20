@@ -113,7 +113,7 @@ namespace AntCode64.ONEMAX_Console
             // Creating TimerData.csv if it does not already exist
             if (!File.Exists("TimerData.csv"))
             {
-                File.AppendAllText("TimerData.csv", "Population Name, Population Size, Mutation Rate, Top Fitness, Average Fitness, Time to Completion, CPU Time, Reason for Termination\n");
+                File.AppendAllText("TimerData.csv", "Population Name, Population Size, Mutation Rate, Top Fitness, Average Fitness, Generations to Completion, Time to Completion, CPU Time, Reason for Termination\n");
             }
 
             // Starting stopwatch for 1 min cutoff
@@ -141,15 +141,15 @@ namespace AntCode64.ONEMAX_Console
                 // Creates a new generation, and updates pop.orgs to hold the new organisms
                 pop.NewGen();
 
-                if (sw.ElapsedMilliseconds >= 60000)
+                if (Process.GetCurrentProcess().TotalProcessorTime.TotalMilliseconds >= 15000)
                 {
-                    PrintTimerData(pop.getFinalResult(), sw.ElapsedMilliseconds, pop.termReason);
+                    PrintTimerData(pop.GetFinalResult(), sw.ElapsedMilliseconds, pop.termReason);
                     return;
                 }
             }
 
             sw.Stop();
-            PrintTimerData(pop.getFinalResult(), sw.ElapsedMilliseconds, pop.termReason);
+            PrintTimerData(pop.GetFinalResult(), sw.ElapsedMilliseconds, pop.termReason);
             return;
         }
 

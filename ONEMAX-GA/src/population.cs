@@ -113,9 +113,9 @@ namespace AntCode64.ONEMAX_Console
                 termReason = "Asymptotic Fitness";
             }
         }
-        public string getFinalResult()
+        public string GetFinalResult()
         {
-            return popName + ", " + popSize.ToString() + ", " + mutationRate.ToString() + ", " + topFitness.ToString() + ", " + avgFitness.ToString();
+            return popName + ", " + popSize.ToString() + ", " + mutationRate.ToString() + ", " + topFitness.ToString() + ", " + avgFitness.ToString() + generationsPassed.ToString();
         }
 
         // CONCERN WITH DATA COLLECTION ****************************

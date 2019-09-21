@@ -38,7 +38,7 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="bin\Debug\ONEMAX-Console.exe.config" />
-    <None Include="bin\Debug\script.bat" />
+    <None Include="bin\Debug\repetitions.bat" />
     <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="obj\Debug\ONEMAX-Console.csproj.CoreCompileInputs.cache" />
     <None Include="obj\Debug\ONEMAX-Console.csprojAssemblyReference.cache" />

@@ -115,7 +115,7 @@ namespace AntCode64.ONEMAX_Console
         }
         public string GetFinalResult()
         {
-            return popName + ", " + popSize.ToString() + ", " + mutationRate.ToString() + ", " + topFitness.ToString() + ", " + avgFitness.ToString() + generationsPassed.ToString();
+            return popName + ", " + popSize.ToString() + ", " + mutationRate.ToString() + ", " + topFitness.ToString() + ", " + avgFitness.ToString() + ", " + generationsPassed.ToString();
         }
 
         // CONCERN WITH DATA COLLECTION ****************************
